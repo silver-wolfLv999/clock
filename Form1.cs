@@ -44,9 +44,21 @@ namespace clock
             x4 = x1 + 30 * (float)Math.Sin(hourRad);
             y4 = y1 - 30 * (float)Math.Cos(hourRad);
 
-            g.DrawLine(new Pen(Color.Red, 1), x1, y1, x2, y2);
-            g.DrawLine(new Pen(Color.Blue, 5), x1, y1, x3, y3);
-            g.DrawLine(new Pen(Color.Green, 10), x1, y1, x4, y4);
+            using (var secondArrow = new System.Drawing.Drawing2D.AdjustableArrowCap(8, 10, true))
+            using (var minuteArrow = new System.Drawing.Drawing2D.AdjustableArrowCap(2.4F, 3, true))
+            using (var hourArrow = new System.Drawing.Drawing2D.AdjustableArrowCap(1.6F, 2, true))
+            using (var secondPen = new Pen(Color.Red, 1))
+            using (var minutePen = new Pen(Color.Blue, 5))
+            using (var hourPen = new Pen(Color.Green, 10))
+            {
+                secondPen.CustomEndCap = secondArrow;
+                minutePen.CustomEndCap = minuteArrow;
+                hourPen.CustomEndCap = hourArrow;
+
+                g.DrawLine(secondPen, x1, y1, x2, y2);
+                g.DrawLine(minutePen, x1, y1, x3, y3);
+                g.DrawLine(hourPen, x1, y1, x4, y4);
+            }
 
             g.DrawString("12", new Font("Times New Roman", 10, FontStyle.Bold | FontStyle.Italic), new SolidBrush(Color.Green), new Point(449,54));
             g.DrawString("6", new Font("Times New Roman", 10, FontStyle.Bold | FontStyle.Italic), new SolidBrush(Color.Green), new Point(454, 167));
