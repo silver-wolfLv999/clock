@@ -78,6 +78,7 @@ namespace clock
             time(460.0F, 120.0F, second, minute, hour);
             time(290.0F, 120.0F, s, m, h);
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (second == 59)
@@ -113,11 +114,6 @@ namespace clock
             paint();
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-            textBox1.Focus();
-        }
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyData)
@@ -148,6 +144,10 @@ namespace clock
                     break;
 
             }
+        }
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            textBox1.Focus();
         }
 
         private void textBox2_Click(object sender, EventArgs e)
