@@ -95,20 +95,19 @@ namespace clock
             }
             else
                 second++;
-            if (s == 1)
+            if (s == 0)
             {
-                s = 60;
+                s = 59;
                 m--;
                 if (m == -1)
                 {
                     m = 59;
                     h--;
                     if (h == -1)
-                        h = 12;
-                    if (h > 12)
-                        h -= 12;
+                        MessageBox.Show("Time's up!", "Countdown Timer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+
             else
                 s--;
             paint();
